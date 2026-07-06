@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IntelliQuiz</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <h1>🧠 Welcome to IntelliQuiz</h1>
+
+    <form action="/quiz" method="POST">
+
+        <label>Enter Your Name:</label>
+        <br>
+        <input type="text" name="name" required>
+
+        <br><br>
+
+        <label>Enter Your Age:</label>
+        <br>
+        <input type="number" name="age" min="10" max="100" required>
+
+        <br><br>
+
+        <label>Select Category:</label>
+        <br>
+
+        <select name="category" required>
+
+            <option value="">-- Select Category --</option>
+
+            <option value="Mathematics">
+                Mathematics
+            </option>
+
+            <option value="Logical Reasoning">
+                Logical Reasoning
+            </option>
+
+            <option value="Technology">
+                Technology
+            </option>
+
+            <option value="General Knowledge">
+                General Knowledge
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">
+            Start Quiz
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IntelliQuiz Results</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <h1>🎉 IntelliQuiz Results</h1>
+
+    <hr>
+
+    <h2>Name: {{ name }}</h2>
+
+    <h2>Age: {{ age }}</h2>
+
+    <h2>Category: {{ category }}</h2>
+
+    <br>
+
+    <h2>Score: {{ score }}/{{ total_questions }}</h2>
+
+    <h2>Percentage: {{ percentage }}%</h2>
+
+    <h2>Reasoning Level: {{ level }}</h2>
+
+    <h2>Brain Age Estimate: {{ brain_age }}</h2>
+
+    <br>
+
+    {% if percentage >= 90 %}
+
+        <h3>🏆 Outstanding Performance!</h3>
+
+    {% elif percentage >= 70 %}
+
+        <h3>⭐ Great Job! Keep Improving.</h3>
+
+    {% elif percentage >= 50 %}
+
+        <h3>👍 Good Attempt. Practice More.</h3>
+
+    {% else %}
+
+        <h3>📚 Keep Learning and Try Again.</h3>
+
+    {% endif %}
+
+    <br>
+    <hr>
+
+<h2>Review Your Mistakes</h2>
+
+{% if wrong_answers %}
+
+    {% for item in wrong_answers %}
+
+        <div class="review-box">
+
+            <p>
+                <strong>Question:</strong>
+                {{ item.question }}
+            </p>
+
+            <p style="color:red;">
+                ❌ Your Answer:
+                {{ item.your_answer }}
+            </p>
+
+            <p style="color:green;">
+                ✅ Correct Answer:
+                {{ item.correct_answer }}
+            </p>
+
+        </div>
+
+        <br>
+
+    {% endfor %}
+
+{% else %}
+
+    <h3>🎉 Perfect Score! No mistakes.</h3>
+
+{% endif %}
+
+    <a href="/">
+        <button>
+            Play Again
+        </button>
+    </a>
+
+</div>
+
+</body>
+</html>

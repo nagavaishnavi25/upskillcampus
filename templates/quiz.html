@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IntelliQuiz</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <h1>🧠 IntelliQuiz</h1>
+
+    <h3>
+        Category: {{ session["category"] }}
+    </h3>
+
+    <h3>
+        Question {{ session["question_index"] + 1 }}
+        of
+        {{ total_questions }}
+    </h3>
+
+    <h4>
+        Difficulty: {{ question["difficulty"] }}
+    </h4>
+
+    <hr>
+
+    <h2>
+        {{ question["question"] }}
+    </h2>
+
+    <form action="/result" method="POST">
+
+        <div class="options">
+
+            {% for option in question["options"] %}
+
+                <label>
+
+                    <input type="radio"
+                           name="answer"
+                           value="{{ option }}"
+                           required>
+
+                    {{ option }}
+
+                </label>
+
+                <br>
+
+            {% endfor %}
+
+        </div>
+
+        <br>
+
+        <button type="submit">
+            Submit Answer
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
